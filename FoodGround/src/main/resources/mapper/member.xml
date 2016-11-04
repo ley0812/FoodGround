@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.brendon.lee.dao.MemberDAO">
+    <insert id="insert" parameterType="com.brendon.lee.vo.Member">
+        INSERT INTO member (section_id, nickname, password, email, ipv4) 
+        VALUES 
+        (#{sectionId}
+        ,#{nickName}
+        ,PASSWORD(#{password})
+        ,#{email}
+        ,#{ip})
+    </insert>
+   	
+   	<select id="existNickName" parameterType="com.brendon.lee.vo.MemberUnit" resultType="boolean">
+		SELECT count(*)  
+		FROM member 
+		WHERE section_id = #{sectionId} 
+		AND nickname = #{nickName}
+   	</select>
+   	
+   	<select id="existMember" parameterType="com.brendon.lee.vo.MemberUnit" resultType="boolean">
+		SELECT count(*) 
+		FROM member 
+		WHERE nickname = #{nickName} 
+		AND password = PASSWORD(#{password}) 
+		AND section_id = #{sectionId}
+   	</select>
+   	
+   	<insert id="insertFavorite" parameterType="com.brendon.lee.vo.Favorite">
+   		INSERT INTO favorite (nickname, section_id, store_id, toggle) 
+		VALUES (#{nickName}
+			   ,#{sectionId}
+			   ,#{storeId}
+			   ,#{toggle}) 
+		ON DUPLICATE KEY UPDATE 
+		   	 nickname=#{nickName}
+			,section_id=#{sectionId}
+			,store_id=#{storeId}
+			,toggle=#{toggle}
+   	</insert>
+   	
+</mapper>

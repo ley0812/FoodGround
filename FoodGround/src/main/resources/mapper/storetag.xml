@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.brendon.lee.dao.StoreTagDAO">
+	
+	<resultMap id="tag_binding" type="com.brendon.lee.vo.Tag">
+         <result property="keyword" column="tag_keyword"/>
+         <result property="menu" column="tag_menu"/>
+         <result property="service" column="tag_service"/>
+    </resultMap>
+	
+    <select id="readAll" parameterType="com.brendon.lee.vo.Tag" resultMap="tag_binding">
+		SELECT 
+		tag_keyword
+		,tag_menu
+		,tag_service 
+		FROM store
+    </select>
+</mapper>

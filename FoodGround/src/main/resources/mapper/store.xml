@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.brendon.lee.dao.StoreDAO">
+    <insert id="insert" parameterType="com.brendon.lee.vo.Store">
+        INSERT INTO store (store_name, category, section_id, address1, address2, 
+        zipcode, coordinates, tel_main, tel_sub, img1, img2, store_url, tag_keyword, 
+        tag_menu, tag_service, open, nickname) 
+        VALUES 
+        (#{name}
+        ,#{category}
+        ,#{sectionId}
+        ,#{mainAddress}
+        ,#{subAddress}        
+        ,#{zipcode}        
+        ,#{coordinates}       
+        ,#{mainTelephone}        
+        ,#{subTelephone}               
+        ,#{firstImage}
+        ,#{secondImage}        
+        ,#{url}
+        ,#{tagKeyword}
+        ,#{tagMenu}
+        ,#{tagService}
+        ,#{open}
+        ,#{nickName})
+    </insert>
+   
+ 	<resultMap id="store_binding" type="com.brendon.lee.vo.Store">
+ 	     <result property="id" column="id"/>
+         <result property="name" column="store_name"/>
+         <result property="category" column="category"/>
+         <result property="sectionId" column="section_id"/>
+         <result property="mainAddress" column="address1"/>
+         <result property="subAddress" column="address2"/>
+         <result property="zipcode" column="zipcode"/>
+         <result property="coordinates" column="coordinates"/>
+         <result property="mainTelephone" column="tel_main"/>
+         <result property="subTelephone" column="tel_sub"/>
+         <result property="firstImage" column="img1"/>
+         <result property="secondImage" column="img2"/>
+         <result property="url" column="store_url"/>
+         <result property="tagKeyword" column="tag_keyword"/>
+         <result property="tagMenu" column="tag_menu"/>
+         <result property="tagService" column="tag_service"/>
+         <result property="open" column="open"/>
+         <result property="nickName" column="nickname"/>    
+         <result property="toggle" column="toggle"/>
+    </resultMap>
+
+    <select id="readAll" resultMap="store_binding" parameterType="com.brendon.lee.vo.StoreReadUnit">
+    	SELECT store.id, store_name, category, store.section_id, address1, address2, zipcode, coordinates, 
+    		tel_main, tel_sub, img1, img2, store_url, tag_keyword, tag_menu, tag_service, open, store.nickname, 
+    		(SELECT toggle 
+    		FROM favorite 
+    		WHERE store_id=store.id  
+    		AND section_id=#{sectionId} 
+    		AND nickname=#{nickName})
+    		toggle 
+    	FROM store  
+    	LEFT JOIN favorite 
+    	ON store.id = favorite.store_id
+    </select>
+
+    <select id="readOne" resultMap="store_binding" parameterType="com.brendon.lee.vo.StoreReadUnit">
+  		SELECT store.id, store_name, category, store.section_id, address1, address2, zipcode, coordinates, 
+    		tel_main, tel_sub, img1, img2, store_url, tag_keyword, tag_menu, tag_service, open, store.nickname, 
+    		(SELECT toggle 
+    		FROM favorite 
+    		WHERE store_id=#{id} 
+    		AND section_id=#{sectionId} 
+    		AND nickname=#{nickName})
+    		toggle 
+    	FROM store 
+    	LEFT JOIN favorite 
+    	ON store.id = favorite.store_id
+    	WHERE store.id=#{id} 
+    </select>
+
+    <update id="update" parameterType="com.brendon.lee.vo.StoreUpdateUnit">
+    	UPDATE store SET ${type}=#{memo} 
+    	WHERE id=#{storeId}
+    </update>
+    
+    <update id="updateStoreDupilicateName" parameterType="com.brendon.lee.vo.Store">
+    	UPDATE store SET store_name=CONCAT("(확인필요!)", #{name})  
+    	WHERE store_name=#{name} 
+    	AND section_id=#{sectionId}
+    </update>
+    	
+	<update id="delete" parameterType="com.brendon.lee.vo.StoreCloseUnit">
+		UPDATE store SET 
+		open=#{open} 
+    	WHERE id=#{storeId} 
+    	AND section_id=#{sectionId}
+	</update>
+	
+  	<select id="search" resultMap="store_binding" parameterType="com.brendon.lee.vo.Keyword">
+   	 	SELECT store.id, store_name, category, store.section_id, address1, address2, zipcode, coordinates, 
+    		tel_main, tel_sub, img1, img2, store_url, tag_keyword, tag_menu, tag_service, open, store.nickname, 
+    		(SELECT toggle 
+    		FROM favorite 
+    		WHERE store_id=store.id
+    		AND section_id=#{sectionId} 
+    		AND nickname=#{nickName})
+    		toggle 
+    	FROM store 
+    	LEFT JOIN favorite 
+    	ON store.id = favorite.store_id 
+		WHERE       	
+    	  <foreach index="index" collection="keywords" separator="OR">
+        	tag_keyword LIKE '%${keywords[index]}%'
+  		  </foreach>
+  	 	OR 
+  	 	  <foreach index="index" collection="keywords" separator="OR">
+        	tag_menu LIKE '%${keywords[index]}%'
+  		  </foreach>
+  	 	OR 
+  	 	  <foreach index="index" collection="keywords" separator="OR">
+        	tag_service LIKE '%${keywords[index]}%'
+  		  </foreach>
+    </select>
+    
+</mapper>

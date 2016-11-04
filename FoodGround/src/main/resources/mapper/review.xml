@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.brendon.lee.dao.ReviewDAO">
+	
+	<resultMap id="review_binding" type="com.brendon.lee.vo.Review">
+         <result property="storeId" column="store_id"/>
+         <result property="sectionId" column="section_id"/>
+         <result property="nickName" column="nickname"/>
+         <result property="contents" column="contents"/>
+         <result property="ip" column="ipv4"/>
+    </resultMap>
+	
+    <insert id="insert" parameterType="com.brendon.lee.vo.Review">
+		INSERT INTO review 
+			(store_id
+			,section_id
+			,nickname
+			,contents
+			,ipv4) 
+        VALUES 
+       		(#{storeId}
+        	,#{sectionId}
+        	,#{nickName}
+        	,#{contents}
+        	,#{ip})
+    </insert>
+    
+    <select id="readAll" parameterType="int" resultMap="review_binding">
+		SELECT 
+			store_id
+			,section_id
+			,nickname
+			,contents
+			,ipv4 
+		FROM
+		 	review 
+		WHERE
+		 	store_id=#{storeId}
+   	</select>
+   	
+</mapper>
