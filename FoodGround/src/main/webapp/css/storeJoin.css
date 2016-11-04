@@ -1,0 +1,106 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+header {
+	position: relative;
+	color: white;
+	width: 100%;
+    height : 150px;
+    background: linear-gradient(to left, rgba(255, 104, 39,0.3), rgba(255, 104, 39, 1)); /*Standard*/
+	clear: left;
+	text-align: center;
+}
+h2 {
+	display: inline;
+	float: left;
+	margin-top: 15px;
+	padding: 5px;
+	height: 100%;
+	font-size: 3.8em;
+}
+.join fieldset {
+	border: 0px;
+	width: 100%;
+}
+.tel {
+	width: 20%;
+}
+.label {
+	font-size: 45px;
+	color: #282828;
+}
+.h2:after {
+	clear: both;
+}
+.must {
+	color: red;
+	font-size: 0.7em;
+}
+.element {
+	padding: 7px;
+}
+.btn_group {
+	display: inline;
+	padding: 5px;
+	position: absolute;
+	float: right;
+	right: 0px;
+	top: 0px;
+}
+input {
+	width: 500px;
+	font-size: 40px;
+	height: 50px;
+	margin: 10px;
+	border-color: rgba(255, 104, 39, 0.7);
+}
+.btn_group:after {
+	clear: both;
+}
+.btn {
+	margin-top: 25px;
+	margin-right: 5px;
+	padding: 10px;
+	border: none;
+	background-color: #FFFFFF;
+	color: rgba(255, 104, 39, 0.9);
+	font-size: 40px;
+}
+.inner_btn {
+	padding: 10px;
+	border: none;
+	background-color:rgba(255, 104, 39, 0.9);
+	color: #FFFFFF;
+	font-size: 35px;
+}
+.file_btn::-webkit-file-upload-button {
+	border: none;
+	height: 100%;
+	background-color:rgba(255, 104, 39, 0.9);
+	color: #FFFFFF;
+	font-size: 35px;
+}
+.error {
+	margin-left: 10px;
+	color: #ff0000;
+	font-size: 35px;
+}
+.select {
+	margin: 10px;
+	font-size: 50px;
+	color: #282828;
+	border-color: rgba(255, 104, 39, 0.7);
+}
+.radio {
+	width: 7%;
+	display: inline;
+	font-size: 50px;
+	color: #282828;
+}
+.sectionId {
+	margin: 10px;
+	font-size: 50px;
+	color: #282828;
+	border-color: rgba(255, 104, 39, 0.7);
+}

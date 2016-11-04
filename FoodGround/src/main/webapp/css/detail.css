@@ -1,0 +1,165 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+header {
+	position: relative;
+	color: white;
+	width: 100%;
+    height : 150px;
+    background: linear-gradient(to left, rgba(255, 104, 39,0.3), rgba(255, 104, 39, 1)); /*Standard*/
+	clear: left;
+	text-align: center;
+}
+h2 {
+	display: inline;
+	float: left;
+	margin-top: 15px;
+	padding: 5px;
+	height: 100%;
+	font-size: 3.8em;
+}
+.h2:after {
+	clear: both;
+}
+.img_div {
+	position: absolute;
+	width: 100%;
+	height: 450px;
+}
+.img {
+	width: 100%;
+	height: 450px;
+}
+.content_div {
+	margin-top: 460px;	
+}
+textarea {
+	font-size: 50px;
+	margin: 15px;
+	resize: none;
+	border: 0px solid blue;
+}
+.edit_mark {
+	width: 50px;
+	height: 50px;
+	padding: 20px;
+}
+.edit_logo {
+	width: 50px;
+	height: 50px;
+	padding: 10px;
+}
+.name {
+	font-size: 65px;
+	font-weight: bold;
+	width: 600px;
+	color: rgba(255, 104, 39, 0.9);
+	resize: none;
+}
+.tag_menu, .tag_keyword, .tag_service, .address, .telephone {
+	color: #595858;
+	width: 600px;
+	font-size: 30px; 
+	resize: none;
+}
+.edit_btn {
+	float: right;
+	margin-right: 40px;
+	margin-top: 15px;
+	background-color: rgba(255, 104, 39, 0.7);
+	padding: 5px;
+	color: #FFFFFF;
+	font-size: 40px;
+	display: none;	
+}
+.back_btn {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	padding: 5px;
+	margin-right: 20px;
+	margin-top: 40px;
+	background-color: #FFFFFF;
+	color: rgba(255, 104, 39, 0.7);
+	font-size: 40px;		
+}
+.back_btn:after {
+	clear: both;
+}
+.button-tool {
+	width: 100%;
+	height: 200px;
+}
+.like {	
+	float: left;
+	margin: 40px;
+	margin-left: 20px;
+}
+.like img {
+	float: left;
+	left: 0px;
+	width: 90px;
+	padding: 10px;
+	opacity: 0.85;
+}
+.like span {
+	float: left;
+	left: 0px;
+	margin-right: 20px;
+	padding-top: 30px;
+	font-size: 30px;
+	color: #595858;
+}
+.recommend {
+	float: left;
+	margin-bottom: 55px;
+	margin-top: 40px;
+	margin-left: 0px;
+	margin-right: 0px;
+	width: 260px;
+	padding: 10px;
+}
+.recommend img{
+	width: 85px;
+	height: 85px;
+	padding-bottom: 20px;
+}
+.recommend span {
+	float: right;
+	right: 20px;
+	padding-top: 20px;
+	height: 64px;
+	font-size: 30px;
+	color: rgba(255, 104, 39, 1);
+}
+
+.closed_div {
+	float: right;
+	margin: 40px;
+	right: 0px;
+}
+.closed_div span{
+	float: right;
+	padding-top: 40px;
+	padding-left: 10px;
+	height: 64px;
+	font-size: 25px;
+	color: #595858;
+}
+.review_box {
+	position: relative;
+	border: 3px solid rgba(255, 104, 39, 1);
+	size: 8px;
+	font-size: 40px;
+}
+.review_button {
+	position: absolute;
+	margin-top: 35px;
+	margin-left: 15px;
+	padding: 17px;
+	border: none;
+	background-color: rgba(255, 104, 39, 0.9);
+	color: #FFFFFF;
+	font-size: 40px;
+}
