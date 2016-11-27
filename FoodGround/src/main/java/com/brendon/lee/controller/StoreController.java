@@ -69,7 +69,7 @@ public class StoreController {
 			bindingResult.rejectValue("file1", "field.required", "이미지를 업로드해주세요.");
 		}
 		
-		if(bindingResult.hasErrors()){
+		if(bindingResult.hasErrors()) {
 		    return "storeJoin";
 		}
 	    

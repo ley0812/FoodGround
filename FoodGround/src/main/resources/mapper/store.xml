@@ -85,7 +85,7 @@
     </update>
     
     <update id="updateStoreDupilicateName" parameterType="com.brendon.lee.vo.Store">
-    	UPDATE store SET store_name=CONCAT("(확인필요!)", #{name})  
+    	UPDATE store SET store_name=CONCAT('[확인필요!]', #{name})  
     	WHERE store_name=#{name} 
     	AND section_id=#{sectionId}
     </update>

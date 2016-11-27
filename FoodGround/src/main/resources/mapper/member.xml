@@ -9,7 +9,7 @@
         VALUES 
         (#{sectionId}
         ,#{nickName}
-        ,PASSWORD(#{password})
+        ,#{password}
         ,#{email}
         ,#{ip})
     </insert>
@@ -25,7 +25,7 @@
 		SELECT count(*) 
 		FROM member 
 		WHERE nickname = #{nickName} 
-		AND password = PASSWORD(#{password}) 
+		AND password = #{password} 
 		AND section_id = #{sectionId}
    	</select>
    	
